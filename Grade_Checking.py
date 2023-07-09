@@ -30,15 +30,13 @@ for row in worksheet.iter_rows():
         # 创建Chrome浏览器对象并传入选项
         driver = webdriver.Chrome(options=chrome_options)
 
-        driver.get("https://824305.yichafen.com/public/queryscore/sqcode/NsDcEnzmNDgzNnwwZDYyYjI4M2ZiNDliNzE5Y2YyNTJmN2ZlOGQyZWRmY3w4MjQzMDUO0O0O.html")  # get方式访问百度.
+        driver.get("https://824305.yichafen.com/public/queryscore/sqcode/NsDcEnzmNDgzNnwwZDYyYjI4M2ZiNDliNzE5Y2YyNTJmN2ZlOGQyZWRmY3w4MjQzMDUO0O0O.html")  # get方式访问查分网站.
 
-        driver.find_element(By.XPATH,"/html/body/div/div[2]/div[4]/div/div[2]/form/table/tbody/tr[1]/td[2]/input").send_keys(
-            username)  # 输入学号
+        driver.find_element(By.XPATH,"/html/body/div/div[2]/div[4]/div/div[2]/form/table/tbody/tr[1]/td[2]/input").send_keys(username)  # 输入学号
         driver.find_element(By.XPATH,"/html/body/div/div[2]/div[4]/div/div[2]/form/table/tbody/tr[2]/td[2]/input").send_keys(name)  # 输入姓名
 
         driver.find_element(By.XPATH, "/html/body/div/div[2]/div[4]/div/div[2]/form/div/button").click()  # 点击登陆
 
-        # tbody_element = driver.find_element(By.XPATH, "/html/body/div/div[2]/div[1]/div[2]/table/tbody/tr[1]")
         time.sleep(1)
         tbody_element = driver.find_element(By.XPATH, "/html/body/div/div[2]/div[1]/div[2]/table/tbody/tr[2]")
 
@@ -55,9 +53,6 @@ for row in worksheet.iter_rows():
         print("查询失败", name)
         row[2].value = '查询失败'
 
-    # 保存Excel文件
-    workbook.save(r'C:\Users\65349\Desktop\test.xlsx')  # 替换为你的保存路径
-    driver.quit()
 
 #保存Excel文件
 workbook.save(r'C:\Users\65349\Desktop\test.xlsx')  # 替换为你的保存路径
